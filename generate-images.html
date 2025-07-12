@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Images</title>
+</head>
+<body>
+    <h2>Placeholder Images for Sorted & Organized by CM</h2>
+    <p>Right-click and save these images to your project:</p>
+    
+    <h3>Hero Image (1920x1080)</h3>
+    <canvas id="hero" width="1920" height="1080"></canvas>
+    
+    <h3>Owner Portrait (800x800)</h3>
+    <canvas id="owner" width="800" height="800"></canvas>
+    
+    <h3>Pantry Image (1200x600)</h3>
+    <canvas id="pantry" width="1200" height="600"></canvas>
+
+    <script>
+        // Hero Image
+        const hero = document.getElementById('hero').getContext('2d');
+        const heroGradient = hero.createLinearGradient(0, 0, 1920, 1080);
+        heroGradient.addColorStop(0, '#596856');
+        heroGradient.addColorStop(1, '#A8B8A3');
+        hero.fillStyle = heroGradient;
+        hero.fillRect(0, 0, 1920, 1080);
+        hero.fillStyle = '#FFFFFF';
+        hero.font = '48px Arial';
+        hero.textAlign = 'center';
+        hero.fillText('Hero Image Placeholder', 960, 540);
+
+        // Owner Portrait
+        const owner = document.getElementById('owner').getContext('2d');
+        owner.fillStyle = '#EDEBE6';
+        owner.fillRect(0, 0, 800, 800);
+        owner.fillStyle = '#A8B8A3';
+        owner.beginPath();
+        owner.arc(400, 300, 100, 0, 2 * Math.PI);
+        owner.fill();
+        owner.beginPath();
+        owner.ellipse(400, 600, 150, 100, 0, 0, 2 * Math.PI);
+        owner.fill();
+        owner.fillStyle = '#2E3033';
+        owner.font = '24px Arial';
+        owner.textAlign = 'center';
+        owner.fillText('Owner Portrait', 400, 750);
+
+        // Pantry Image
+        const pantry = document.getElementById('pantry').getContext('2d');
+        pantry.fillStyle = '#F7F8F9';
+        pantry.fillRect(0, 0, 600, 600);
+        pantry.fillStyle = '#A3D9C1';
+        pantry.fillRect(600, 0, 600, 600);
+        pantry.fillStyle = '#2E3033';
+        pantry.font = '32px Arial';
+        pantry.textAlign = 'center';
+        pantry.fillText('Pantry Image', 600, 300);
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+
+interface ServiceCardProps {
+  service: {
+    title: string;
+    description: string;
+    icon?: string;
+  };
+  index: number;
+}
+
+const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ y: -5 }}
+      className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6"
+    >
+      {service.icon && (
+        <div className="w-12 h-12 bg-mint-accent/20 rounded-full flex items-center justify-center mb-4">
+          <span className="text-2xl">{service.icon}</span>
+        </div>
+      )}
+      <h4 className="text-xl font-semibold text-charcoal mb-3">{service.title}</h4>
+      <p className="text-forest-shadow/80">{service.description}</p>
+    </motion.div>
+  );
+};
+
+export default ServiceCard;

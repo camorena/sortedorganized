@@ -1,0 +1,710 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   IMPORTS & ROOT VARIABLES
+   ======================================== */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* CSS Variables for Brand Colors */
+:root {
+  /* New Color Palette */
+  --color-primary: #596856; /* Forest Slate */
+  --color-secondary: #a8b8a3; /* Soft Sage */
+  --color-neutral: #f4f1ed; /* Ivory Hush */
+  --color-accent-warm: #d5b8a8; /* Moderate Warm Sand */
+  --color-accent-cool: #b0a0b9; /* Moderate Lavender Mist */
+  --color-accent-dark: #806f82; /* Moderate Dusty Plum */
+
+  /* Color variations for hover/opacity */
+  --color-accent-warm-hover: #c5a798; /* Slightly darker Warm Sand for hover */
+  --color-accent-cool-hover: #a090a9; /* Slightly darker Lavender Mist for hover */
+  --color-primary-light: rgba(89, 104, 86, 0.1); /* 10% opacity Forest Slate */
+  --color-secondary-light: rgba(168, 184, 163, 0.1); /* 10% opacity Soft Sage */
+
+  /* Legacy Variable Names - for backward compatibility */
+  --color-white: #ffffff;
+  --color-fog-gray: #f4f1ed; /* Now matches Ivory Hush */
+  --color-warm-ivory: #f4f1ed; /* Now matches Ivory Hush */
+  --color-charcoal: #596856; /* Now matches Forest Slate */
+  --color-forest-shadow: #596856; /* Now matches Forest Slate */
+  --color-sage-light: #a8b8a3; /* Now matches Soft Sage */
+  --color-mint-accent: #b0a0b9; /* Maps to moderate Lavender Mist */
+  --color-gold-highlight: #d5b8a8; /* Maps to moderate Warm Sand */
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+
+@layer base {
+  /* HTML & Body */
+  html {
+    @apply scroll-smooth antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply font-sans text-primary bg-neutral;
+    font-feature-settings: 'kern' 1;
+  }
+
+  /* Typography */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif font-medium leading-tight text-primary;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+
+  h5 {
+    @apply text-lg md:text-xl;
+  }
+
+  h6 {
+    @apply text-base md:text-lg;
+  }
+
+  p {
+    @apply leading-relaxed text-primary;
+  }
+
+  /* Links */
+  a {
+    @apply transition-colors duration-200 text-accent-cool hover:text-accent-warm;
+  }
+
+  /* Images */
+  img {
+    @apply max-w-full h-auto;
+  }
+}
+
+/* ========================================
+   COMPONENT STYLES
+   ======================================== */
+
+@layer components {
+  /* Container */
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 font-semibold rounded-lg 
+           transition-all duration-200 focus:outline-none focus-visible:ring-2 
+           focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent-cool text-white hover:bg-[color:var(--color-accent-cool-hover)]
+           focus-visible:ring-accent-cool shadow-md hover:shadow-lg 
+           transform hover:scale-105 active:scale-100;
+  }
+
+  .btn-secondary {
+    @apply btn bg-secondary text-primary hover:bg-secondary
+           focus-visible:ring-secondary shadow-md hover:shadow-lg 
+           transform hover:scale-105 active:scale-100;
+  }
+
+  .btn-accent {
+    @apply btn bg-accent-warm text-white hover:bg-[color:var(--color-accent-warm-hover)]
+           focus-visible:ring-accent-warm shadow-md hover:shadow-lg 
+           transform hover:scale-105 active:scale-100;
+  }
+
+  .btn-outline {
+    @apply btn bg-transparent border-2 border-current hover:bg-white
+           focus-visible:ring-current;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-xl shadow-lg hover:shadow-xl 
+           transition-shadow duration-300 overflow-hidden;
+  }
+
+  .card-body {
+    @apply p-6 md:p-8;
+  }
+
+  /* Sections */
+  .section-padding {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+
+  /* Prose */
+  .prose-custom {
+    @apply prose prose-lg prose-primary max-w-none
+           prose-headings:font-serif prose-headings:text-primary
+           prose-p:text-primary prose-p:leading-relaxed
+           prose-a:text-accent-cool prose-a:no-underline hover:prose-a:underline
+           prose-strong:text-primary prose-strong:font-semibold;
+  }
+
+  /* Glass Effect */
+  .glass {
+    @apply bg-white backdrop-blur-md border border-white;
+  }
+
+  .glass-dark {
+    @apply bg-primary backdrop-blur-md border border-primary;
+  }
+
+  /* Transparency Classes */
+  .bg-primary-10 {
+    background-color: rgba(89, 104, 86, 0.1);
+  }
+
+  .bg-primary-20 {
+    background-color: rgba(89, 104, 86, 0.2);
+  }
+
+  .bg-secondary-10 {
+    background-color: rgba(168, 184, 163, 0.1);
+  }
+
+  .bg-secondary-20 {
+    background-color: rgba(168, 184, 163, 0.2);
+  }
+
+  .bg-neutral-10 {
+    background-color: rgba(244, 241, 237, 0.1);
+  }
+
+  .bg-neutral-20 {
+    background-color: rgba(244, 241, 237, 0.2);
+  }
+
+  .bg-accent-warm-10 {
+    background-color: rgba(213, 184, 168, 0.1);
+  }
+
+  .bg-accent-warm-20 {
+    background-color: rgba(213, 184, 168, 0.2);
+  }
+
+  .bg-accent-cool-10 {
+    background-color: rgba(176, 160, 185, 0.1);
+  }
+
+  .bg-accent-cool-20 {
+    background-color: rgba(176, 160, 185, 0.2);
+  }
+
+  .bg-accent-dark-10 {
+    background-color: rgba(128, 111, 130, 0.1);
+  }
+
+  .bg-accent-dark-20 {
+    background-color: rgba(128, 111, 130, 0.2);
+  }
+
+  .bg-white-60 {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .bg-white-80 {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+@layer utilities {
+  /* Text Balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Gradients */
+  .gradient-warm {
+    background: linear-gradient(
+      135deg,
+      var(--color-accent-warm) 0%,
+      #c9a796 100%
+    );
+  }
+
+  .gradient-cool {
+    background: linear-gradient(
+      135deg,
+      var(--color-accent-cool) 0%,
+      var(--color-accent-dark) 100%
+    );
+  }
+
+  .gradient-primary {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-secondary) 100%
+    );
+  }
+
+  .gradient-neutral {
+    background: linear-gradient(135deg, var(--color-neutral) 0%, #e8e3dc 100%);
+  }
+
+  /* Text Gradients */
+  .text-gradient-warm {
+    @apply bg-clip-text text-transparent gradient-warm;
+  }
+
+  .text-gradient-cool {
+    @apply bg-clip-text text-transparent gradient-cool;
+  }
+
+  /* Overlays */
+  .overlay-dark {
+    @apply absolute inset-0 bg-primary;
+    opacity: 0.6;
+  }
+
+  .overlay-light {
+    @apply absolute inset-0 bg-neutral;
+    opacity: 0.6;
+  }
+
+  /* Aspect Ratios */
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+  }
+
+  .aspect-portrait {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+/* Hero Specific Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(-10px) rotate(-1deg);
+  }
+}
+
+@keyframes float-delayed {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-15px) rotate(-1deg);
+  }
+  66% {
+    transform: translateY(-25px) rotate(1deg);
+  }
+}
+
+/* Animation Classes */
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out both;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.animate-fadeInDown {
+  animation: fadeInDown 0.6s ease-out both;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.8s ease-out both;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.6s ease-out both;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.6s ease-out both;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.6s ease-out both;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 6s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+/* Animation Delays */
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+.animation-delay-700 {
+  animation-delay: 700ms;
+}
+.animation-delay-800 {
+  animation-delay: 800ms;
+}
+.animation-delay-900 {
+  animation-delay: 900ms;
+}
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+/* ========================================
+   TRANSITIONS
+   ======================================== */
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.transition-shadow {
+  transition-property: box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* ========================================
+   CUSTOM ELEMENTS
+   ======================================== */
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-neutral;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary rounded-full;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
+}
+
+::-webkit-scrollbar-corner {
+  @apply bg-neutral;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(176, 160, 185, 0.2);
+  @apply text-primary;
+}
+
+::-moz-selection {
+  background-color: rgba(176, 160, 185, 0.2);
+  @apply text-primary;
+}
+
+/* Focus Styles */
+*:focus {
+  @apply outline-none;
+}
+
+*:focus-visible {
+  @apply ring-2 ring-accent-cool ring-offset-2 ring-offset-white;
+}
+
+/* ========================================
+   RESPONSIVE & ACCESSIBILITY
+   ======================================== */
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  html {
+    font-size: 15px;
+  }
+
+  .animate-float,
+  .animate-float-delayed {
+    animation-duration: 4s;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    @apply text-black bg-white;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --color-accent-warm: #c9805e;
+    --color-accent-cool: #9e87ae;
+  }
+
+  .btn-primary,
+  .btn-accent {
+    @apply border-2 border-current;
+  }
+}
+
+/* ========================================
+   UTILITY HELPERS
+   ======================================== */
+
+/* Visually Hidden (for screen readers) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip to Content Link */
+.skip-to-content {
+  @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 
+         focus:z-50 focus:px-4 focus:py-2 focus:bg-accent-cool focus:text-white 
+         focus:rounded-md focus:no-underline;
+}

@@ -1,0 +1,65 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+interface PortfolioItemProps {
+  item: {
+    id: string;
+    title: string;
+    category: string;
+    description: string;
+    beforeImage: string;
+    afterImage: string;
+  };
+  index: number;
+}
+
+const PortfolioItem: React.FC<PortfolioItemProps> = ({ item, index }) => {
+  const [showAfter, setShowAfter] = useState(false);
+
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+      className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
+    >
+      <div className="relative h-80 overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={showAfter ? 'after' : 'before'}
+            src={showAfter ? item.afterImage : item.beforeImage}
+            alt={`${item.title} - ${showAfter ? 'After' : 'Before'}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="w-full h-full object-cover"
+          />
+        </AnimatePresence>
+        
+        {/* Toggle Button */}
+        <button
+          onClick={() => setShowAfter(!showAfter)}
+          className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full 
+                   text-sm font-medium text-charcoal hover:bg-white transition-colors duration-200"
+        >
+          {showAfter ? 'See Before' : 'See After'}
+        </button>
+        
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent 
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-300 
+                      flex items-end p-6">
+          <div className="text-white">
+            <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
+            <p className="text-sm opacity-90">{item.description}</p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default PortfolioItem;
