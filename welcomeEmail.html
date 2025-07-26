@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Thank You for Contacting Sorted & Organized by CM</title>
+    <style type="text/css">
+        /* Base styles */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.6;
+            color: #596856;
+            /* forest-slate/primary */
+            background-color: #F4F1ED;
+            /* ivory-hush/neutral */
+        }
+
+        /* Container styling */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: #FFFFFF;
+        }
+
+        /* Header styling */
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(to right, #F4F1ED, #FFFFFF);
+            /* ivory-hush to white */
+            border-bottom: 3px solid #A8B8A3;
+            /* soft-sage/secondary */
+        }
+
+        .header img {
+            max-width: 200px;
+            height: auto;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+
+        /* Content styling */
+        .content {
+            padding: 30px 20px;
+            background-color: #FFFFFF;
+        }
+
+        /* Card styling */
+        .card {
+            border-left: 4px solid #A8B8A3;
+            /* soft-sage/secondary */
+            background-color: #F4F1ED;
+            /* ivory-hush/neutral */
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            border-left: 4px solid #B0A0B9;
+            /* lavender-mist/accent-cool */
+            background-color: rgba(176, 160, 185, 0.1);
+            /* lavender-mist/accent-cool at 10% */
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        /* Footer styling */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #596856;
+            /* forest-slate/primary */
+            background-color: #F4F1ED;
+            /* ivory-hush/neutral */
+        }
+
+        /* Typography */
+        h1 {
+            color: #596856;
+            /* forest-slate/primary */
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 400;
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #596856;
+            /* forest-slate/primary */
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 400;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #596856;
+            /* forest-slate/primary */
+        }
+
+        a {
+            color: #B0A0B9;
+            /* lavender-mist/accent-cool */
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #D5B8A8;
+            /* warm-sand/accent-warm */
+        }
+
+        /* Button styling */
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #B0A0B9;
+            /* lavender-mist/accent-cool */
+            color: white !important;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .button:hover {
+            background-color: #D5B8A8;
+            /* warm-sand/accent-warm */
+            color: white;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background-color: #B0A0B9;
+            /* lavender-mist/accent-cool */
+            color: white;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+
+        /* Social media */
+        .social-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 14px;
+            color: #596856;
+            /* forest-slate/primary */
+        }
+
+        /* Responsive adjustments */
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .content {
+                padding: 20px 15px;
+            }
+
+            .button {
+                display: block;
+                width: 80%;
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- Same logo as in Navbar.tsx -->
+            <img src="https://your-domain.com/assets/images/logo_sorted.png" alt="Sorted & Organized by CM Logo">
+            <!-- Note: Replace the above URL with the publicly hosted location of your logo -->
+        </div>
+
+        <div class="content">
+            <h1>Thank You for Reaching Out!</h1>
+
+            <p>Dear {{name}},</p>
+
+            <p>Thank you for contacting Sorted & Organized by CM. We're excited to learn about your organization project
+                and help transform your space into a functional and beautiful environment.</p>
+
+            <p>We've received your inquiry regarding <strong>{{service}}</strong> and will be in touch within 24-48
+                hours to discuss your project in more detail.</p>
+
+            <div class="card">
+                <h2>What to Expect Next</h2>
+                <p>Our founder, Catalina, will personally review your message and contact you to schedule an initial
+                    consultation. During this consultation, we'll discuss your specific needs, answer any questions you
+                    may have, and determine the best approach for your project.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h2>Our Services</h2>
+                <p><strong>In-Person Services:</strong> Available throughout the Twin Cities metro area including Saint
+                    Paul, Minneapolis, and surrounding suburbs.</p>
+                <p><strong>Virtual Consultations:</strong> Available worldwide! We can help you create organized spaces
+                    no matter where you're located.</p>
+            </div>
+
+            <p>In the meantime, feel free to explore our <a href="https://example.com/portfolio">portfolio</a> to see
+                examples of our previous transformations.</p>
+
+            <p>If you have any immediate questions, please don't hesitate to call us at (612) 308-4781.</p>
+
+            <p>We look forward to helping you create a more organized and peaceful space!</p>
+
+            <p>
+                Warm regards,<br>
+                Catalina<br>
+                <em>Sorted & Organized by CM</em>
+            </p>
+
+            <center>
+                <a href="https://example.com/services" class="button">Explore Our Services</a>
+            </center>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 Sorted & Organized by CM. All Rights Reserved.</p>
+            <p>In-person services in the Twin Cities Metro Area <span class="badge">Local</span><br>
+                Virtual consultations available worldwide <span class="badge">Global</span></p>
+            <p>
+                <a href="tel:+16123084781">(612) 308-4781</a>
+            </p>
+
+            <div class="social-links">
+                <!-- Replace # with your actual social media URLs -->
+                <a href="#">Instagram</a> |
+                <a href="#">Facebook</a> |
+                <a href="#">Pinterest</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

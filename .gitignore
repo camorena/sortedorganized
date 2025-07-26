@@ -85,3 +85,5 @@ debug.log
 .turbo
 dist-ssr
 *.local
+node_modules
+node_modules

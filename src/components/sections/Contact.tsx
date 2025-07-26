@@ -486,17 +486,15 @@ const ContactInfo: React.FC = () => {
         </div>
         <div className="space-y-2 text-forest-shadow">
           <div className="flex justify-between">
-            <span>Monday - Friday</span>
-            <span className="font-medium">9:00 AM - 6:00 PM</span>
+            <span>Availability by appointment only.</span>
           </div>
           <div className="flex justify-between">
-            <span>Saturday</span>
-            <span className="font-medium">10:00 AM - 4:00 PM</span>
+            <span>Please reach out to schedule a consultation. I respond to all
+              inquiries within 24–48 hours. <br></br>Feel free to reach out and I’ll
+              follow up as soon as I can.
+            </span>
           </div>
-          <div className="flex justify-between">
-            <span>Sunday</span>
-            <span className="font-medium">By appointment</span>
-          </div>
+         
         </div>
       </div>
 

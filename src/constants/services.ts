@@ -1,118 +1,308 @@
+// src/constants/services.ts
 export const residentialServices = [
   {
     title: 'Pantry Organization',
-    description: 'Product sourcing, workflow optimization, declutter food, boxes, add containers',
-    icon: '🥫'
+    description:
+      'Product sourcing, workflow optimization, declutter food, boxes, add containers',
+    iconType: 'Pantry',
+    details: [
+      'A personalized consultation (in-person or virtual to assess your space, needs, and goals.)',
+      'Full sorting and categorization of pantry items',
+      'Light shelf cleaning',
+      'Custom organizing system designed around your lifestyle',
+      'Product recommendations',
+      'Labeling',
+      'A final walk-through',
+      'An optional follow-up to ensure long-term success',
+    ],
   },
   {
     title: 'Kitchen Organization',
     description: 'Cabinets, drawers, under-sink storage optimization',
-    icon: '🍴'
+    iconType: 'Kitchen',
+    details: [
+      'A personalized consultation (in-person or virtual to assess your space, needs, and goals.)',
+      'Sorting and decluttering of kitchen items',
+      'Light cleaning',
+      'Customized organizing solutions tailored to your lifestyle',
+      'Product recommendations',
+      'A final walkthrough to ensure everything works smoothly',
+      'Check-in after two weeks',
+    ],
   },
   {
     title: 'Closet Makeovers',
     description: 'Sorting, folding, seasonal rotation, space-saving strategies',
-    icon: '👔'
+    iconType: 'Closet',
+    details: [
+      'Personalized Consultation - In-person or virtual meeting to assess your space, needs, and goals',
+      'Sorting & Decluttering',
+      'Light Cleaning',
+      'Customized Organizing Solutions',
+      'Product Recommendations',
+      'Final Walkthrough',
+      'Check-in after two weeks',
+    ],
   },
   {
     title: 'Home Office Setup',
     description: 'Desks, bookcases, staging, décor, paper filing systems',
-    icon: '💼'
+    iconType: 'Office',
+    details: [
+      'Personalized Consultation (Virtual or in-person session to understand your work style, space challenges, and goals)',
+      'Decluttering & Sorting',
+      'Light Cleaning',
+      'Optimized Space Planning',
+      'Customized Organizing Systems',
+      'Product Recommendations',
+      'Final Walkthrough',
+      'Check-in after two weeks',
+    ],
   },
   {
     title: 'Playroom Organization',
     description: 'Toy rotation systems, labeled bins for easy cleanup',
-    icon: '🧸'
+    iconType: 'Playroom',
+    details: [
+      "Initial consultation (virtual or in-person) to assess the space, needs, and children's routines",
+      'Full sorting of toys and items',
+      'Categorization',
+      'Decluttering and removal of broken or outgrown items',
+      'Customized organizing system',
+      'Product recommendations',
+      'Child-friendly labeling',
+      'Light cleaning',
+      'Final walkthrough',
+      'Check-in after two weeks',
+    ],
   },
   {
     title: 'Laundry Room Setup',
     description: 'Efficient layout and storage solutions',
-    icon: '🧺'
+    iconType: 'Laundry',
+    details: [
+      'Initial consultation (in-person or virtual) to evaluate space, layout, and daily routines',
+      'Sorting and decluttering',
+      'Categorization of items',
+      'Customized organizing system to maximize space and improve flow',
+      'Product recommendations',
+      'Light cleaning of shelves',
+      'Labeling',
+      'Styling and setup of the space for functionality and visual harmony',
+      'Check-in after two weeks to ensure the space is working as intended',
+    ],
   },
   {
-    title: 'Moving Services',
+    title: 'New Home Transition Organizing',
     description: 'Declutter before moving and organize in new home',
-    icon: '📦'
+    iconType: 'Moving',
+    details: [
+      'Initial consultation (in-person or virtual) to assess layout, needs, and priorities',
+      'Unpacking support',
+      'Sorting and categorization',
+      'Decluttering guidance',
+      'Customized organizing systems',
+      'Product recommendations',
+      'Light cleaning of shelves',
+      'Labeling and system setup',
+      'Styling for a cohesive, calm, and functional environment',
+      'Two-week check-in to ensure the space is working as intended',
+    ],
   },
   {
     title: 'Home Styling',
     description: 'Staging and declutter after organizing',
-    icon: '🏡'
+    iconType: 'HomeStyle',
+    details: [
+      'Initial consultation (in-person or virtual) to understand the space, style preferences, and daily routines',
+      'Space planning',
+      'Decluttering and editing of décor, furniture, and accessories',
+      'Styling with intention',
+      'Product and décor recommendations',
+      'Shelf and surface styling',
+      'Room-by-room enhancement',
+      'Light cleaning',
+      'Final walk-through',
+      'Two-week follow-up check-in to answer questions or adjust elements if needed',
+    ],
   },
   {
     title: 'Maintenance Plans',
     description: 'Monthly or seasonal refresh sessions',
-    icon: '📅'
-  }
-];
+    iconType: 'Maintenance',
+    details: [
+      'Quarterly or bi-monthly check-ins (virtual or in-person) to review systems and make adjustments as needed',
+      'Refresh of high-use areas',
+      'Light re-sorting',
+      'Re-labeling',
+      'Seasonal decluttering',
+      'Product updates',
+      'Surface tidy-up and light re-styling',
+      'Tips and support for long-term success',
+    ],
+  },
+]
 
 export const commercialServices = [
   {
     title: 'Office Space Organization',
     description: 'Desks, common areas, conference rooms optimization',
-    icon: '🏢'
-  },
-  {
-    title: 'Filing Organization',
-    description: 'Physical document organization systems',
-    icon: '📁'
+    iconType: 'OfficeSpace',
+    details: [
+      'Initial consultation (virtual or in-person) to assess layout, workflow, and staff needs',
+      'Workspace analysis',
+      'Sorting and decluttering',
+      'Categorization of items',
+      'Custom organizing systems',
+      'Product recommendations',
+      'Labeling and zoning to streamline processes',
+      'Light cleaning of surfaces',
+      'Final walk-through',
+      'Two-week follow-up to adjust or support as needed',
+    ],
   },
   {
     title: 'Supply Room Setup',
     description: 'Inventory and labeling systems',
-    icon: '📋'
+    iconType: 'SupplyRoom',
+    details: [
+      'Initial consultation (virtual or in-person) to assess the space, inventory flow, and team access',
+      'Inventory decluttering and sorting',
+      'Categorization by department',
+      'Custom organizing systems to streamline access',
+      'Product recommendations',
+      'Labeling and zone creation',
+      'Light cleaning of shelves',
+      'Styling for function and flow',
+      'Walk-through with staff or office manager',
+      'Optional check-in after two weeks to ensure everything is working smoothly',
+    ],
   },
   {
     title: 'Break Room Organization',
     description: 'Snacks, kitchenware, shared storage solutions',
-    icon: '☕'
+    iconType: 'BreakRoom',
+    details: [
+      'Initial consultation (virtual or in-person) to assess layout, employee usage, and needs',
+      'Decluttering and sorting',
+      'Categorization by usage',
+      'Customized organizing system to improve flow',
+      'Product recommendations',
+      'Labeling for easy maintenance',
+      'Light cleaning of cabinets',
+      'Styling for harmony and hygiene',
+      'Final walk-through',
+      'Optional two-week check-in to assess system success and staff feedback',
+    ],
   },
   {
     title: 'Reception & Lobby',
     description: 'First impression-ready space decluttering',
-    icon: '🎯'
+    iconType: 'Reception',
+    details: [
+      'Initial consultation (virtual or in-person) to assess layout, branding, traffic flow, and client experience',
+      'Decluttering and sorting of furniture',
+      'Space planning and flow optimization',
+      'Organizing materials like brochures, forms, and front-desk supplies',
+      'Product and furniture recommendations',
+      'Light cleaning',
+      'Styling and staging',
+      'Final walk-through',
+      'Optional two-week check-in to assess results and make refinements',
+    ],
   },
   {
     title: 'Workflow Optimization',
     description: 'Functional setup of high-use areas',
-    icon: '⚡'
+    iconType: 'Workflow',
+    details: [
+      'Analysis of current workflow patterns and bottlenecks',
+      'Rearrangement of spaces based on task frequency',
+      'Creation of efficient workstations for specific tasks',
+      'Optimization of material and tool access',
+      'Implementation of visual management systems',
+      'Training on maintaining optimized workflows',
+    ],
   },
   {
     title: 'Event Prep Support',
     description: 'Organizing supplies/materials before corporate events',
-    icon: '🎉'
-  }
-];
+    iconType: 'EventPrep',
+    details: [
+      'Inventory and organization of event materials',
+      'Creation of event-specific packing lists',
+      'Preparation of presentation materials',
+      'Organization of handouts and promotional items',
+      'Setup of registration and welcome materials',
+      'Post-event organization and inventory',
+    ],
+  },
+]
 
 export const addOnServices = [
   {
-    title: 'Donation Coordination',
-    description: 'Drop-off or pickup of unwanted items',
-    icon: '♻️'
-  },
-  {
     title: 'Labeling Services',
     description: 'Custom, aesthetic labeling for jars, bins, files',
-    icon: '🏷️'
+    iconType: 'Labeling',
+    details: [
+      'Creation of custom label designs that match your aesthetic',
+      'Printing and application of durable labels',
+      'Consistent labeling systems across spaces',
+      'Waterproof labels for kitchen and bathroom',
+      'Color-coded categorization systems',
+      'Digital files of all labels for future use',
+    ],
   },
   {
     title: 'Product Sourcing',
     description: 'Recommending or purchasing containers and tools',
-    icon: '🛍️'
+    iconType: 'ProductSourcing',
+    details: [
+      'Assessment of specific organizational needs',
+      'Research of appropriate container options',
+      'Customized shopping lists with options at various price points',
+      'Purchasing service to save you time',
+      'Delivery coordination and unpacking',
+      "Return management for items that don't work",
+    ],
   },
   {
-    title: 'Virtual Organizing',
+    title: 'Virtual Consultation / Consultoria en Español',
     description: 'Guidance via video calls for remote clients',
-    icon: '💻'
+    iconType: 'Virtual',
+    details: [
+      'Pre-session questionnaire to understand goals, space type, and specific challenges',
+      'Live virtual walk-through of the space (via Zoom or preferred video platform)',
+      'Personalized action plan with step-by-step guidance on sorting, categorizing, and organizing',
+      'Product recommendations based on space dimensions, needs, and aesthetic preferences',
+      'Space layout suggestions to improve functionality and flow',
+      'Digital follow-up with a summary of recommendations and product links',
+      'Email and/or WhatsApp support for up to 7 days post-consultation for any questions or progress updates',
+    ],
   },
   {
-    title: 'Gift Certificates',
+    title: 'Sorted & Organized Gift Certificates',
     description: 'Organization as a thoughtful service gift',
-    icon: '🎁'
+    iconType: 'GiftCertificate',
+    details: [
+      'Customizable gift amount to fit any budget or service type',
+      'Digital or printed certificate with personalized message options',
+      'Redeemable for any service (pantry, closet, home office, move-in setup, virtual consults & more)',
+      'Flexible scheduling so the recipient can choose what works best for them',
+      'Beautiful presentation — ideal for gifting on special occasions',
+    ],
   },
   {
     title: 'Workshops & Coaching',
     description: 'Teach clients how to maintain their spaces',
-    icon: '🎓'
-  }
-];
+    iconType: 'Workshop',
+    details: [
+      'Customized organization skill-building sessions',
+      'Hands-on practice with maintenance techniques',
+      'Development of personalized organization habits',
+      'Group workshops for families or teams',
+      'Reference materials and checklists',
+      'Follow-up coaching to ensure long-term success',
+    ],
+  },
+]
