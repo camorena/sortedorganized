@@ -1,32 +1,11 @@
 // src/components/sections/Contact.tsx
 import React, { useState, useEffect, useRef } from 'react'
-import emailjs from '@emailjs/browser'
+import emailjs from 'emailjs-com'
 
 // EmailJS configuration from environment variables
 const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID
 const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID
 const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-
-// Add console logs to check the values
-console.log('EmailJS Environment Variables:')
-console.log('EMAILJS_SERVICE_ID:', EMAILJS_SERVICE_ID)
-console.log('EMAILJS_TEMPLATE_ID:', EMAILJS_TEMPLATE_ID)
-console.log('EMAILJS_PUBLIC_KEY:', EMAILJS_PUBLIC_KEY)
-console.log('Types:', {
-  serviceIdType: typeof EMAILJS_SERVICE_ID,
-  templateIdType: typeof EMAILJS_TEMPLATE_ID,
-  publicKeyType: typeof EMAILJS_PUBLIC_KEY,
-})
-console.log('Defined check:', {
-  serviceIdDefined: EMAILJS_SERVICE_ID !== undefined,
-  templateIdDefined: EMAILJS_TEMPLATE_ID !== undefined,
-  publicKeyDefined: EMAILJS_PUBLIC_KEY !== undefined,
-})
-console.log('Truthiness check:', {
-  serviceIdTruthy: !!EMAILJS_SERVICE_ID,
-  templateIdTruthy: !!EMAILJS_TEMPLATE_ID,
-  publicKeyTruthy: !!EMAILJS_PUBLIC_KEY,
-})
 
 // Service options for the selector
 const serviceOptions = [
@@ -204,7 +183,7 @@ const ContactForm: React.FC = () => {
             <p className="text-yellow-700">
               <strong>Note:</strong> The contact form is currently unavailable.
               Please contact us directly by phone at (612) 308-4781 or email at
-              sortedbyc@gmail.com.
+              sortedorganizedbycm@gmail.com.
             </p>
           </div>
         )}
