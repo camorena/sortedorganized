@@ -56,7 +56,6 @@ const ContactForm: React.FC = () => {
       )
       setEmailJsConfigured(false)
     } else {
-      console.log('EmailJS environment variables are properly configured')
       setEmailJsConfigured(true)
     }
   }, [])
