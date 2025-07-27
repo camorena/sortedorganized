@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light">
-    <title>Thank You for Contacting Sorted & Organized by CM</title>
+    <title>New Contact Form Submission - Sorted & Organized by CM</title>
     <style type="text/css">
         /* Base styles */
         body,
@@ -59,6 +59,25 @@
             padding: 20px;
             margin: 20px 0;
             border-radius: 5px;
+        }
+
+        /* Field styling */
+        .field {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #F4F1ED;
+        }
+
+        .field-label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #596856;
+        }
+
+        .field-value {
+            color: #596856;
+            word-break: break-word;
         }
 
         /* Highlight box */
@@ -144,30 +163,16 @@
         }
 
         /* Badge */
-        .badge {
+        .priority-badge {
             display: inline-block;
             padding: 4px 10px;
-            background-color: #B0A0B9;
-            /* lavender-mist/accent-cool */
+            background-color: #D5B8A8;
+            /* warm-sand/accent-warm */
             color: white;
             border-radius: 30px;
             font-size: 12px;
             font-weight: 500;
             margin-left: 8px;
-        }
-
-        /* Social media */
-        .social-links {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .social-links a {
-            display: inline-block;
-            margin: 0 10px;
-            font-size: 14px;
-            color: #596856;
-            /* forest-slate/primary */
         }
 
         /* Responsive adjustments */
@@ -203,61 +208,68 @@
         </div>
 
         <div class="content">
-            <h1>Thank You for Reaching Out!</h1>
+            <h1>Hola, Catalina.<span class="priority-badge">New</span></h1>
 
-            <p>Dear {{name}},</p>
-
-            <p>Thank you for contacting Sorted & Organized by CM. We're excited to learn about your organization project
-                and help transform your space into a functional and beautiful environment.</p>
-
-            <p>We've received your inquiry regarding <strong>{{service}}</strong> and will be in touch within 24-48
-                hours to discuss your project in more detail.</p>
+            <p>A potential client has submitted a contact form on your website. Details of their inquiry are below:</p>
 
             <div class="card">
-                <h2>What to Expect Next</h2>
-                <p>Our founder, Catalina, will personally review your message and contact you to schedule an initial
-                    consultation. During this consultation, we'll discuss your specific needs, answer any questions you
-                    may have, and determine the best approach for your project.</p>
+                <h2>Contact Information</h2>
+
+                <div class="field">
+                    <div class="field-label">Name:</div>
+                    <div class="field-value">{{name}}</div>
+                </div>
+
+                <div class="field">
+                    <div class="field-label">Email:</div>
+                    <div class="field-value">{{email}}</div>
+                </div>
+
+                <div class="field">
+                    <div class="field-label">Phone:</div>
+                    <div class="field-value">{{phone}}</div>
+                </div>
             </div>
 
             <div class="highlight-box">
-                <h2>Our Services</h2>
-                <p><strong>In-Person Services:</strong> Available throughout the Twin Cities metro area including Saint
-                    Paul, Minneapolis, and surrounding suburbs.</p>
-                <p><strong>Virtual Consultations:</strong> Available worldwide! We can help you create organized spaces
-                    no matter where you're located.</p>
+                <h2>Project Details</h2>
+
+                <div class="field">
+                    <div class="field-label">Service Needed:</div>
+                    <div class="field-value">{{service}}</div>
+                </div>
+
+                <div class="field">
+                    <div class="field-label">Preferred Timeline:</div>
+                    <div class="field-value">{{timeline}}</div>
+                </div>
+
+                <div class="field">
+                    <div class="field-label">Estimated Budget:</div>
+                    <div class="field-value">{{budget}}</div>
+                </div>
+
+                <div class="field" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+                    <div class="field-label">Client Message:</div>
+                    <div class="field-value">{{message}}</div>
+                </div>
             </div>
 
-            <p>In the meantime, feel free to explore our <a href="https://example.com/portfolio">portfolio</a> to see
-                examples of our previous transformations.</p>
-
-            <p>If you have any immediate questions, please don't hesitate to call us at (612) 308-4781.</p>
-
-            <p>We look forward to helping you create a more organized and peaceful space!</p>
-
-            <p>
-                Warm regards,<br>
-                Catalina<br>
-                <em>Sorted & Organized by CM</em>
+            <p>Please respond to this client within 24-48 hours to schedule a consultation or answer their questions.
             </p>
 
             <center>
-                <a href="https://sortedorganized.com/services" class="button">Explore Our Services</a>
+                <a href="mailto:{{email}}" class="button">Reply to {{name}}</a>
             </center>
+
+            <p style="font-size: 14px; color: #596856; opacity: 0.7; margin-top: 30px; text-align: center;">
+                This message was sent from the contact form on sortedorganized.com.<br>
+                Submitted on: {{submitted_at}}
+            </p>
         </div>
 
         <div class="footer">
             <p>© 2025 Sorted & Organized by CM. All Rights Reserved.</p>
-
-            <a href="tel:+16123084781">(612) 308-4781</a>
-            </p>
-
-            <div class="social-links">
-                <!-- Replace # with your actual social media URLs -->
-                <a href="#">Instagram</a> |
-                <a href="#">Facebook</a> |
-                <a href="#">Pinterest</a>
-            </div>
         </div>
     </div>
 </body>

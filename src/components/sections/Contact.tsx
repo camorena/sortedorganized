@@ -1,5 +1,11 @@
 // src/components/sections/Contact.tsx
 import React, { useState, useEffect, useRef } from 'react'
+import emailjs from '@emailjs/browser'
+
+// EmailJS configuration from environment variables
+const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY
 
 // Service options for the selector
 const serviceOptions = [
@@ -28,10 +34,32 @@ const ContactForm: React.FC = () => {
     budget: '',
     message: '',
   })
+  // Fixed the useState syntax
   const [status, setStatus] = useState<
     'idle' | 'loading' | 'success' | 'error'
   >('idle')
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const [emailJsConfigured, setEmailJsConfigured] = useState(true)
+
+  // Check if EmailJS environment variables are configured
+  useEffect(() => {
+    // Check each required environment variable
+    const missingVars = []
+    if (!EMAILJS_SERVICE_ID) missingVars.push('REACT_APP_EMAILJS_SERVICE_ID')
+    if (!EMAILJS_TEMPLATE_ID) missingVars.push('REACT_APP_EMAILJS_TEMPLATE_ID')
+    if (!EMAILJS_PUBLIC_KEY) missingVars.push('REACT_APP_EMAILJS_PUBLIC_KEY')
+
+    if (missingVars.length > 0) {
+      console.error(
+        'Missing EmailJS environment variables:',
+        missingVars.join(', ')
+      )
+      setEmailJsConfigured(false)
+    } else {
+      console.log('EmailJS environment variables are properly configured')
+      setEmailJsConfigured(true)
+    }
+  }, [])
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {}
@@ -81,11 +109,40 @@ const ContactForm: React.FC = () => {
       return
     }
 
+    // Check if EmailJS is configured properly
+    if (!emailJsConfigured) {
+      console.error('EmailJS is not configured properly. Cannot send email.')
+      setStatus('error')
+      return
+    }
+
     setStatus('loading')
 
-    // Simulate form submission - Replace with EmailJS integration
-    setTimeout(() => {
-      console.log('Form submitted:', formData)
+    // Get the service label instead of value for the email
+    const selectedService = serviceOptions.find(
+      (option) => option.value === formData.service
+    )
+    const serviceLabel = selectedService
+      ? selectedService.label
+      : formData.service
+
+    // Prepare template parameters
+    const templateParams = {
+      ...formData,
+      service: serviceLabel,
+      submitted_at: new Date().toLocaleString(),
+    }
+
+    try {
+      // Send notification email to business owner using environment variables
+      await emailjs.send(
+        EMAILJS_SERVICE_ID || '',
+        EMAILJS_TEMPLATE_ID || '',
+        templateParams,
+        EMAILJS_PUBLIC_KEY || ''
+      )
+
+      // Reset form and show success message
       setStatus('success')
       setFormData({
         name: '',
@@ -99,7 +156,10 @@ const ContactForm: React.FC = () => {
 
       // Reset status after 5 seconds
       setTimeout(() => setStatus('idle'), 5000)
-    }, 1500)
+    } catch (error) {
+      console.error('Email sending failed:', error)
+      setStatus('error')
+    }
   }
 
   return (
@@ -117,6 +177,16 @@ const ContactForm: React.FC = () => {
             We'll respond within 24 hours to discuss your project.
           </p>
         </div>
+
+        {!emailJsConfigured && (
+          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6 rounded">
+            <p className="text-yellow-700">
+              <strong>Note:</strong> The contact form is currently unavailable.
+              Please contact us directly by phone at (612) 308-4781 or email at
+              sortedbyc@gmail.com.
+            </p>
+          </div>
+        )}
 
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
           {/* Name and Email Row */}
@@ -297,7 +367,7 @@ const ContactForm: React.FC = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={status === 'loading'}
+            disabled={status === 'loading' || !emailJsConfigured}
             className="w-full py-4 bg-gradient-to-r from-accent-cool to-accent-cool/90 hover:from-accent-cool/90 hover:to-accent-cool text-white font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl shadow-lg group relative overflow-hidden">
             <span className="relative z-10 flex items-center justify-center">
               {status === 'loading' ? (
@@ -489,12 +559,12 @@ const ContactInfo: React.FC = () => {
             <span>Availability by appointment only.</span>
           </div>
           <div className="flex justify-between">
-            <span>Please reach out to schedule a consultation. I respond to all
-              inquiries within 24–48 hours. <br></br>Feel free to reach out and I’ll
-              follow up as soon as I can.
+            <span>
+              Please reach out to schedule a consultation. I respond to all
+              inquiries within 24–48 hours. <br></br>Feel free to reach out and
+              I'll follow up as soon as I can.
             </span>
           </div>
-         
         </div>
       </div>
 
@@ -525,7 +595,7 @@ const ContactInfo: React.FC = () => {
   )
 }
 
-// Main Contact Component
+// Main Contact Component - this declaration was missing in my truncated code
 const Contact: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
@@ -540,13 +610,16 @@ const Contact: React.FC = () => {
       { threshold: 0.1 }
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    // Store the current value of the ref to fix the React hook warning
+    const currentRef = sectionRef.current
+
+    if (currentRef) {
+      observer.observe(currentRef)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      if (currentRef) {
+        observer.unobserve(currentRef)
       }
     }
   }, [])
